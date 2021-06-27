@@ -1,23 +1,15 @@
 // required modules
-const postsResolvers = require('./posts');
-const usersResolvers = require('./users');
-const commentsResolvers = require('./comments');
+const productsResolvers = require('./products');
 
 // A map of functions which return data for the schema.
 const resolvers = {
+
      Query: {
-          ...postsResolvers.Query,
-          ...usersResolvers.Query
+          ...productsResolvers.Query
      },
+
      Mutation: {
-          ...usersResolvers.Mutation,
-          ...postsResolvers.Mutation,
-          ...commentsResolvers.Mutation
-     },
-     Subscription: {
-          ...postsResolvers.Subscription,
-          ...usersResolvers.Subscription,
-          ...commentsResolvers.Subscription
+          ...productsResolvers.Mutation
      }
 }
 

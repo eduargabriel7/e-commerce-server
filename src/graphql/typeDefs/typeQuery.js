@@ -5,11 +5,8 @@ const { gql } = require('apollo-server-express');
 const typeQuery = [
    gql`
       type Query{
-      getUser(username: String!): User!
-      searchUsers(searchUsersInput: SearchUsersInput): [User!]
-      
-      getPosts: [Post!]
-      getPost(getPostInput: GetPostInput): Post!
+         getProducts: [Product!]
+         getProduct(productId: ID!): Product!
       }
    `
 ]
