@@ -6,6 +6,7 @@ const typeQuery = [
    gql`
       type Query{
          getProducts: [Product!]
+         getProductsByCategory(category: String!): [Product!]
          getProduct(productId: ID!): Product!
       }
    `

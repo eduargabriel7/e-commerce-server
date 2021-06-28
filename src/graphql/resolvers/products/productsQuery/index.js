@@ -1,5 +1,5 @@
 // required modules
-const Product = require('../../../../models/Product')
+const Product = require('../../../../models/Product');
 
 // create products queries
 const productsQuery = {
@@ -9,6 +9,26 @@ const productsQuery = {
          const productsFound = await Product.find();
          // return products
          return productsFound;
+      }
+      catch (error) {
+         throw new Error(error);
+      }
+   },
+
+   getProductsByCategory: async (_, { category }) => {
+      try {
+         // verify category string
+         if (category !== '') {
+            const productsByCategory = await Product.find({ category });
+            // return products
+            return productsByCategory;
+         }
+         else {
+            const productsFound = await Product.find();
+            // return products
+            return productsFound;
+         }
+
       }
       catch (error) {
          throw new Error(error);
