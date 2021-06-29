@@ -17,18 +17,11 @@ const productsQuery = {
 
    getProductsByCategory: async (_, { category }) => {
       try {
-         // verify category string
-         if (category !== '') {
-            const productsByCategory = await Product.find({ category });
-            // return products
-            return productsByCategory;
-         }
-         else {
-            const productsFound = await Product.find();
-            // return products
-            return productsFound;
-         }
-
+         const productsByCategory = await Product.find({
+            category: { $regex: category, $options: 'i' }
+         });
+         // return products
+         return productsByCategory;
       }
       catch (error) {
          throw new Error(error);
