@@ -4,9 +4,13 @@ const express = require('express');
 const connection = require('./connection');
 const apollo = require('./apollo');
 const { createServer } = require('http');
+const cors = require('cors');
 
 // create express server
 const app = express();
+
+// cors
+app.use(cors());
 
 // create http server with express
 const server_http_ws = createServer(app);
