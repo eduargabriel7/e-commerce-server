@@ -19,7 +19,7 @@ const productsQuery = {
       try {
          const productsByCategory = await Product.find({
             category: { $regex: category, $options: 'i' }
-         });
+         }).limit(10);
          // return products
          return productsByCategory;
       }
