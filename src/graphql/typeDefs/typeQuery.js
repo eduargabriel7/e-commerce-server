@@ -8,6 +8,7 @@ const typeQuery = [
          getProducts: [Product!]
          getProductsByCategory(category: String!): [Product!]
          getProduct(productId: ID!): Product!
+         searchProducts(searchInput: String!): [Product!]
       }
    `
 ]

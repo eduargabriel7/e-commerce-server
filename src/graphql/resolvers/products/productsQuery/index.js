@@ -40,6 +40,27 @@ const productsQuery = {
       catch (error) {
          throw new Error(error);
       }
+   },
+
+   searchProducts: async (_, { searchInput }) => {
+      try {
+         // verify string
+         if (searchInput === '') return [];
+         // find products
+         const productsFound = await Product.find(
+            {
+               $or: [
+                  { title: { $regex: searchInput, $options: 'i' } },
+                  { category: { $regex: searchInput, $options: 'i' } }
+               ]
+            }
+         ).limit(20)
+         // return products
+         return productsFound;
+      }
+      catch (error) {
+         throw new Error(error);
+      }
    }
 
 }
